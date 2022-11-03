@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import k from './controllers/main.js';
 import loadPlayer from './game_objects/player.js';
+import fireEvent from './controllers/events.js';
 
 function App() {
 
@@ -27,38 +28,11 @@ function App() {
       solid(),
     ]);
 
-    // const player = add([
-    //   sprite("toast"),
-    //   pos(center()),
-    //   area(),
-    //   // body() component gives the ability to respond to gravity
-    //   body(),
-    // ]);
+    const player = loadPlayer(); // load player game object
 
-    const player = loadPlayer();
+    gravity(1000); // Set the gravity acceleration (pixels per second)
 
-    const SPEED = 480;
-
-    // Set the gravity acceleration (pixels per second)
-    gravity(1000);
-
-    onKeyPress("space", () => {
-      // .isGrounded() is provided by body()
-      if (player.isGrounded()) {
-        // .jump() is provided by body()
-        player.jump()
-      }
-    });
-
-    onKeyDown("left", () => {
-      player.move(-SPEED, 0)
-    });
-
-    onKeyDown("right", () => {
-      player.move(SPEED, 0)
-    });
-
-    
+    fireEvent(player); // fire events when triggered
 
   }, []);
 
