@@ -1,6 +1,6 @@
 import kaboom from "kaboom";
 
-export const k = (ref) => {
+const k = (ref) => {
 
     return kaboom({
         width: 900,
@@ -8,3 +8,5 @@ export const k = (ref) => {
         canvas: ref.current
     });
 };
+
+export default k

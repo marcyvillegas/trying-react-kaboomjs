@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
-import { k } from './controllers/main.js';
+import k from './controllers/main.js';
+import loadPlayer from './game_objects/player.js';
 
 function App() {
 
@@ -9,9 +10,6 @@ function App() {
 
     // Start kaboom
     k(canvasRef);
-
-    // Load assets
-    loadSprite("toast", "/src/sprites/toast.png");
 
     // Add text
     add([
@@ -29,13 +27,15 @@ function App() {
       solid(),
     ]);
 
-    const player = add([
-      sprite("toast"),
-      pos(center()),
-      area(),
-      // body() component gives the ability to respond to gravity
-      body(),
-    ]);
+    // const player = add([
+    //   sprite("toast"),
+    //   pos(center()),
+    //   area(),
+    //   // body() component gives the ability to respond to gravity
+    //   body(),
+    // ]);
+
+    const player = loadPlayer();
 
     const SPEED = 480;
 
