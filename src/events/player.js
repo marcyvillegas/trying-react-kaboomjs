@@ -1,4 +1,6 @@
-const SPEED = 480;
+const SPEED = 400;
+
+import addSmallBullet from "../game_objects/small_bullet";
 
 const fireEvent = (gameObj) => {
 
@@ -12,6 +14,10 @@ const fireEvent = (gameObj) => {
 
     onKeyDown("right", () => {
         gameObj.move(SPEED, 0);
+    });
+
+    onKeyPress("space", () => {
+        addSmallBullet(gameObj.pos.add(50, 30));
     });
 }
 

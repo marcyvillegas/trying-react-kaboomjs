@@ -1,7 +1,4 @@
-const loadPlayer = () => {
-
-    // Load assets
-    loadSprite("toast", "/src/sprites/toast.png");
+const addPlayer = () => {
 
     return add([
         sprite("toast"),
@@ -12,4 +9,4 @@ const loadPlayer = () => {
     ]);
 }
 
-export default loadPlayer
+export default addPlayer

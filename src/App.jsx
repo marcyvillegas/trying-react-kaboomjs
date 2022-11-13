@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
-import k from './controllers/main.js';
-import loadPlayer from './game_objects/player.js';
-import fireEvent from './controllers/events.js';
+import { useEffect, useRef } from 'react'
+import k from './main.js';
+import loadAssests from './loader/loader'
+import loadGameScene from './scenes/game'
 
 function App() {
 
@@ -11,36 +11,21 @@ function App() {
 
     // Start kaboom
     k(canvasRef);
+    
+    // Load assests
+    loadAssests();
 
-    // Add text
-    add([
-      text("hello"),
-      pos(1, 2),
-    ]);
+    // Load game scenes
+    loadGameScene();
 
-    // Add a platform to hold the player
-    add([
-      rect(width(), 48),
-      outline(4),
-      area(),
-      pos(0, height() - 48),
-      // Give objects a solid() component if you don't want other solid objects pass through
-      solid(),
-    ]);
-
-    const player = loadPlayer(); // load player game object
-
-    gravity(1000); // Set the gravity acceleration (pixels per second)
-
-    fireEvent(player); // fire events when triggered
+    go("game");
 
   }, []);
 
   return (
     <>
-      <div>
-        <canvas style={{ margin: "auto" }} ref={canvasRef}></canvas>
-        <p style={{}}>sample sample</p>
+      <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center" }}>
+        <canvas style={{ display: "inline-block" }} ref={canvasRef}></canvas>
       </div>
     </>
   )

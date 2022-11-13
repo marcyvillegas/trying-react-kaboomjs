@@ -3,8 +3,8 @@ import kaboom from "kaboom";
 const k = (ref) => {
 
     return kaboom({
-        width: 900,
-        height: 600,
+        width: 700,
+        height: 700,
         canvas: ref.current
     });
 };
